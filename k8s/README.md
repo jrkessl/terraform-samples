@@ -5,6 +5,7 @@ Usage: just have your AWS CLI credentials setup in your shell session and do a `
 ```
 aws eks update-kubeconfig --region sa-east-1 --name TestK8sCluster
 ```
-Note1: the region in which this stuff gets created is in file ```main.tf```. If you update the region there, update it here too (this code wasn't written to rely in shell variable AWS_DEFAULT_REGION).   
-Note2: the name of the cluster that gets created in EKS is defined in file ```main.tf```. Search for variable ```"project_name```. If you update it there, update the command above too.  
-Note3: the terraform state file is being saved in the local folder. So don't waste this folder until after you deleted the infrastructure.  
+Notes:   
+- The region in which this stuff gets created is in file ```main.tf```. If you update the region there, update it here too (this code wasn't written to rely in shell variable AWS_DEFAULT_REGION). 
+- The name of the cluster that gets created in EKS is defined in file ```main.tf```. Search for variable ```"project_name```. If you update it there, update the command above too.
+- The terraform state file is being saved in the local folder. So don't waste this folder until after you deleted the infrastructure.  
