@@ -43,6 +43,8 @@ resource "aws_eks_cluster" "mycluster" {
     aws_iam_role_policy_attachment.mycluster-AmazonEKSClusterPolicy,
     # aws_iam_role_policy_attachment.example-AmazonEKSVPCResourceController,
   ]
+
+  version="1.24"
 }
 
 output "endpoint" {
@@ -67,7 +69,8 @@ resource "aws_eks_node_group" "mynodegroup" {
     min_size     = 1
   }
 
-  instance_types = ["t3.medium"]
+  # instance_types = ["t3.medium"]
+  instance_types = ["t3.micro"]
 
   # Optional: Allow external changes without Terraform plan difference
   lifecycle {
