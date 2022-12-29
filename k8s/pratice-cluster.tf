@@ -63,14 +63,15 @@ resource "aws_eks_node_group" "mynodegroup" {
   # subnet_ids      = aws_subnet.example[*].id
   subnet_ids      = [aws_subnet.mysubnet1.id, aws_subnet.mysubnet2.id, aws_subnet.mysubnet3.id]
 
+
   scaling_config {
     desired_size = 1
     max_size     = 3
     min_size     = 1
   }
 
-  # instance_types = ["t3.medium"]
-  instance_types = ["t3.micro"]
+  instance_types = ["t3.medium"]
+  # instance_types = ["t3.micro"]
 
   # Optional: Allow external changes without Terraform plan difference
   lifecycle {
