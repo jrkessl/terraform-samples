@@ -44,7 +44,7 @@ resource "aws_eks_cluster" "mycluster" {
     # aws_iam_role_policy_attachment.example-AmazonEKSVPCResourceController,
   ]
 
-  version="1.24"
+  version="1.28"
 }
 
 output "endpoint" {
