@@ -5,7 +5,7 @@ This is all set to launch a Kubernetes cluster in AWS EKS service. From the VPC,
 How to launch: 
 1) Download this project's files. 
 2) Have [terraform](https://www.terraform.io/) installed in your workstation.
-3) Have the AWS [CLI](https://aws.amazon.com/cli/) installed in your workstation. 
+3) Have the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed in your workstation. 
 4) Have your AWS [access keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for your AWS IAM user installed in your workstation.
 5) Have the [kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html) executable installed in your workstation.
 6) Go to the project folder (`terraform-samples/k8s`) and do: 
