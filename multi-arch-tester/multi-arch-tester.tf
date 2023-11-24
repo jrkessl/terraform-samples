@@ -49,7 +49,7 @@ resource "aws_security_group" "sg1" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["177.60.55.147/32"] # Change this to your IP address or a more restrictive range
+    cidr_blocks = ["187.56.209.200/32"] # Change this to your IP address or a more restrictive range
   }
   egress {
     from_port   = 0
@@ -61,11 +61,10 @@ resource "aws_security_group" "sg1" {
 
 # Create an EC2 instance using the Ubuntu AMI and the security group
 resource "aws_instance" "x86" {
-  ami           = data.aws_ami.ubuntu_x86.id
-  instance_type = "t2.micro" # Change this to your desired instance type
+  ami = data.aws_ami.ubuntu_x86.id
+  instance_type = "t2.micro" 
   associate_public_ip_address = true
-  key_name      = "gtl-dev-rsa-gitlab"
-#   subnet_id = "subnet-0cea70f9b66873f75"
+  key_name = "gtl-dev-rsa-gitlab"
   subnet_id = "subnet-07c400314610bd284"  
   vpc_security_group_ids = [
     aws_security_group.sg1.id
@@ -73,7 +72,7 @@ resource "aws_instance" "x86" {
   tags = {
     Name = "test-ec2-x86"
   }
-  user_data     = file("cloud-init.sh")
+  user_data = file("cloud-init.sh")
 }
 
 output "x86-ip" { // faz output no console onde roda o terraform, na saída padrão.
@@ -86,11 +85,10 @@ output "x86-id" {
 }
 
 resource "aws_instance" "arm" {
-  ami           = data.aws_ami.ubuntu_arm.id
-  instance_type = "c6g.medium" # Change this to your desired instance type
+  ami = data.aws_ami.ubuntu_arm.id
+  instance_type = "c6g.medium"
   associate_public_ip_address = true
-  key_name      = "gtl-dev-rsa-gitlab"
-#   subnet_id = "subnet-0cea70f9b66873f75"
+  key_name = "gtl-dev-rsa-gitlab"
   subnet_id = "subnet-07c400314610bd284"  
   vpc_security_group_ids = [
     aws_security_group.sg1.id
@@ -98,7 +96,7 @@ resource "aws_instance" "arm" {
   tags = {
     Name = "test-ec2-arm"
   }
-  user_data     = file("cloud-init.sh")
+  user_data = file("cloud-init.sh")
 }
 
 output "arm-ip" { // faz output no console onde roda o terraform, na saída padrão.
