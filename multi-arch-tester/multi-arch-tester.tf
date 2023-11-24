@@ -65,7 +65,7 @@ resource "aws_instance" "x86" {
   instance_type = "t2.micro" 
   associate_public_ip_address = true
   key_name = "gtl-dev-rsa-gitlab"
-  subnet_id = "subnet-07c400314610bd284"  
+  subnet_id = "subnet-07c400314610bd284"
   vpc_security_group_ids = [
     aws_security_group.sg1.id
   ]
@@ -106,6 +106,9 @@ output "message2" {
   value = "Connect to the ARM instance using: ssh ubuntu@${aws_instance.arm.public_ip} -i /home/juliano/googledrive/dinheiro/BairesDev/ViaPath/keys/gtl-dev-rsa-gitlab.pem"
 }
 
-
-
-
+####### IN ADDITION TO THAT...
+# Edit route table rtb-0ac8d5ab4870ca26c 
+# Add new rule: 
+#     rule: 
+#         destination 10.163.204.0/22
+#         target pcx-07e0c2a067bb7c08f
