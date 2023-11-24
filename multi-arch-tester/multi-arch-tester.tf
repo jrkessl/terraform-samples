@@ -90,6 +90,13 @@ resource "aws_instance" "arm" {
   user_data = file("cloud-init.sh")
 }
 
+# The public subnets in that VPC need this route table, otherwise the docker repo is unreachable
+resource "aws_route" "r" {
+  route_table_id            = "rtb-0ac8d5ab4870ca26c"
+  destination_cidr_block    = "10.163.204.0/22"
+  vpc_peering_connection_id = "pcx-07e0c2a067bb7c08f"
+}
+
 output "x86-id" {
   description = "ID of the x86 EC2 instance"
   value = aws_instance.x86.id
@@ -106,9 +113,3 @@ output "message2" {
   value = "Connect to the ARM instance using: ssh ubuntu@${aws_instance.arm.public_ip} -i /home/juliano/googledrive/dinheiro/BairesDev/ViaPath/keys/gtl-dev-rsa-gitlab.pem"
 }
 
-####### IN ADDITION TO THAT...
-# Edit route table rtb-0ac8d5ab4870ca26c 
-# Add new rule: 
-#     rule: 
-#         destination 10.163.204.0/22
-#         target pcx-07e0c2a067bb7c08f
