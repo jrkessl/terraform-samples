@@ -75,15 +75,6 @@ resource "aws_instance" "x86" {
   user_data = file("cloud-init.sh")
 }
 
-output "x86-ip" { // faz output no console onde roda o terraform, na saída padrão.
-  description = "IP of the x86 EC2 instance"
-  value = aws_instance.x86.public_ip
-}
-output "x86-id" {
-  description = "ID of the x86 EC2 instance"
-  value = aws_instance.x86.id
-}
-
 resource "aws_instance" "arm" {
   ami = data.aws_ami.ubuntu_arm.id
   instance_type = "c6g.medium"
@@ -99,13 +90,22 @@ resource "aws_instance" "arm" {
   user_data = file("cloud-init.sh")
 }
 
-output "arm-ip" { // faz output no console onde roda o terraform, na saída padrão.
-  description = "IP of the arm EC2 instance"
-  value = aws_instance.arm.public_ip
+output "x86-id" {
+  description = "ID of the x86 EC2 instance"
+  value = aws_instance.x86.id
 }
 output "arm-id" {
   description = "ID of the arm EC2 instance"
   value = aws_instance.arm.id
 }
+
+output "message1" {
+  value = "Connect to the x86 instance using: ssh ubuntu@${aws_instance.x86.public_ip} -i /home/juliano/googledrive/dinheiro/BairesDev/ViaPath/keys/gtl-dev-rsa-gitlab.pem"
+}
+output "message2" {
+  value = "Connect to the ARM instance using: ssh ubuntu@${aws_instance.arm.public_ip} -i /home/juliano/googledrive/dinheiro/BairesDev/ViaPath/keys/gtl-dev-rsa-gitlab.pem"
+}
+
+
 
 

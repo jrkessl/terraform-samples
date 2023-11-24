@@ -2,6 +2,7 @@
 # echo "alla" > /tmp/file 
 apt-get update
 apt-get install docker.io -y
+sudo gpasswd -a ubuntu docker
 
 
 # #cloud-config
