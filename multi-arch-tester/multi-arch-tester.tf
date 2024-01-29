@@ -49,7 +49,7 @@ resource "aws_security_group" "sg1" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["187.56.209.200/32"] # Change this to your IP address or a more restrictive range
+    cidr_blocks = ["187.74.136.99/32"] # Change this to your IP address or a more restrictive range
   }
   egress {
     from_port   = 0
