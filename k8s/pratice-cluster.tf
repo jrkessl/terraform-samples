@@ -33,19 +33,16 @@ resource "aws_eks_cluster" "mycluster" {
   role_arn = aws_iam_role.role1.arn
 
   vpc_config {
-    # subnet_ids = [aws_subnet.example1.id, aws_subnet.example2.id]
     subnet_ids = [aws_subnet.mysubnet1.id, aws_subnet.mysubnet2.id, aws_subnet.mysubnet3.id]
-    
   }
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Cluster handling.
   # Otherwise, EKS will not be able to properly delete EKS managed EC2 infrastructure such as Security Groups.
   depends_on = [
     aws_iam_role_policy_attachment.mycluster-AmazonEKSClusterPolicy,
-    # aws_iam_role_policy_attachment.example-AmazonEKSVPCResourceController,
   ]
 
-  version="1.28"
+  version = var.kubernetes_version
 }
 
 output "endpoint" {
@@ -66,12 +63,12 @@ resource "aws_eks_node_group" "mynodegroup" {
 
 
   scaling_config {
-    desired_size = 1
-    max_size     = 3
-    min_size     = 1
+    desired_size = var.desired_size
+    max_size     = var.max_size
+    min_size     = var.min_size
   }
 
-  instance_types = ["t3.medium"]
+  instance_types = [var.instance_type]
   # instance_types = ["t3.micro"]
 
   # Optional: Allow external changes without Terraform plan difference

@@ -4,18 +4,6 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
-variable "cidr_blocks" {
-  description = "A map of CIDR blocks to be chosen when creating VPCs and Subnets."
-  type        = map(string)
-  default = {
-    blockA  = "10.0.0.0/16"   // good for one VPC
-    blockA1 = "10.0.0.128/25" // good for one subnet. Contains 128 IPs.
-    blockA2 = "10.0.1.0/25"   // good for one subnet. Contains 128 IPs.
-    blockA3 = "10.0.1.128/25" // good for one subnet. Contains 128 IPs.
-    blockA4 = "10.0.2.0/25"   // good for one subnet. Contains 128 IPs.
-  }
-}
-
 resource "aws_vpc" "myVpc" {          // Creating our VPC.
   cidr_block = var.cidr_blocks.blockA // Get the CIDR block from the variables file.
   tags = {
@@ -102,13 +90,6 @@ resource "aws_security_group" "sg1" {
     protocol    = "tcp"
     cidr_blocks = ["${var.my_ip}"]
   }
-#   ingress {
-#     from_port   = 22
-#     to_port     = 22
-#     protocol    = "tcp"
-#     cidr_blocks = ["${var.my_ip}"]
-#   }
-
   egress {
     from_port   = 0
     to_port     = 0
