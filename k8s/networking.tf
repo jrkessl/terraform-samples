@@ -1,3 +1,5 @@
+# Here is just the networking stuff. VPC, subnets, route tables, etc. The cluster and cluster components are in "main.tf" file. 
+
 data "aws_region" "current" {}
 
 data "aws_availability_zones" "available" {
