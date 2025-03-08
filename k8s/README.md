@@ -12,7 +12,7 @@ How to launch:
 7) Get your public IP on address [checkip.amazonaws.com](https://checkip.amazonaws.com). Open up file `terraform.tfvars` and make sure to put your IP in the value of variable  `my_ip`. This will be used for the AWS security groups (firewalls).  
 8) Do `terraform init` to initialize Terraform (you still need to be in `terraform-samples/k8s` folder).
 9) Do `terraform apply` to launch everything. Confirm object creation when prompted. Now wait for provisioning. It takes about 10 minutes.
-10) After Terraform finishes, run this command to configure your local kubectl executable to point to the cluster you just created. If you changed the region in step 8, change it in this command too.   
+10) After Terraform finishes, run this command to configure your local kubectl executable to point to the cluster you just created. If you changed the region in step 7, change it in this command too.   
 `aws eks update-kubeconfig --region sa-east-1 --name TestK8sCluster`
 
 That's it! You are connected to your test cluster. Now try commands such as: 
