@@ -1,6 +1,6 @@
 # Variable values go here.
 
-my_ip              = "209.104.51.157/32" # Your IP so that SecurityGroup (firewall) rules can be added so that you can access ports 80 or 8080 of any applications you deploy in the cluster. Must be in CIDR block notation, meaning, followed by '/32'. 
+my_ip              = "x.x.x.x/32" # Your IP so that SecurityGroup (firewall) rules can be added so that you can access ports 80 or 8080 of any applications you deploy in the cluster. Must be in CIDR block notation, meaning, followed by '/32'. 
 # example: 
 # my_ip = "200.0.0.1/32"
 
