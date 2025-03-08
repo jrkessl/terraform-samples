@@ -29,11 +29,11 @@ Once you are done testing, destroy (delete) your cluster with `terraform destroy
 ### Troubleshooting
 
 You got `Error: "x.x.x.x/32" is not a valid CIDR block: invalid CIDR address: x.x.x.x/32`  
-
-Solution: You forgot to put your IP in the variables file. See above about it. 
-
+  
+Solution: You forgot to put your IP in the variables file. See above about it.  
+  
 You got `An error occurred (ResourceNotFoundException) when calling the DescribeCluster operation: No cluster found for name: TestK8sCluster.`  
-
+  
 Solution: This can be caused by many things. One good possibility is that you changed the region in step 7 but not in step 10, or vice-versa. If it is not just that, you need to search why is the cluster not where it is expected to be. I suggest you log in to the AWS console, go to the EKS service in the correct region and look for it: where is it, and has its name been changed?
 
 ### IMPORTANT
